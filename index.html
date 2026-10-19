@@ -1,68 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f8c8d8">
-  <title>Gửi mẹ yêu nhân ngày 20/10</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main class="celebration">
-    <div class="sparkle sparkle--one" aria-hidden="true">✦</div>
-    <div class="sparkle sparkle--two" aria-hidden="true">♡</div>
-    <div class="sparkle sparkle--three" aria-hidden="true">✿</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8c8d8" />
+    <title>Gửi mẹ yêu nhân ngày 20/10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="celebration">
+      <div class="sparkle sparkle--one" aria-hidden="true">✦</div>
+      <div class="sparkle sparkle--two" aria-hidden="true">♡</div>
+      <div class="sparkle sparkle--three" aria-hidden="true">✿</div>
 
-    <section class="greeting" aria-labelledby="page-title">
-      <p class="eyebrow">Một món quà nhỏ dành tặng mẹ</p>
-      <h1 id="page-title">Gửi mẹ yêu thương</h1>
-      <p class="instruction">Hãy nhấn nút để mở lời yêu thương của con nhé!</p>
-    </section>
+      <section class="greeting" aria-labelledby="page-title">
+        <p class="eyebrow">Chúc Mừng Ngày Phụ Nữ Việt Nam</p>
+        <h1 id="page-title">Con Trai Yêu Gửi Tặng Mẹ</h1>
+        <p class="instruction">
+          Hãy nhấn nút để mở lời yêu thương của con nhé!
+        </p>
+      </section>
 
-    <div class="envelope-scene">
-      <div class="envelope" id="envelope">
-        <div class="envelope__shadow" aria-hidden="true"></div>
-        <article class="letter" aria-label="Lá thư gửi mẹ">
-          <div class="letter__ribbon" aria-hidden="true">♡</div>
-          <img
-            class="letter__photo"
-            src="image_0602a8.jpg"
-            alt="Một kỷ niệm yêu thương của mẹ"
-            onerror="this.onerror=null; this.src='IMG_20261019_101518.jpg';"
-          >
-          <div class="letter__content">
-            <p class="letter__date">20 tháng 10</p>
-            <h2>Mẹ yêu của con,</h2>
-            <p>
-              Nhân ngày 20.10 ngày Phụ nữ Việt Nam.
-            </p>
-            <p>
-              Con trai yêu xin chúc người mẹ, người phụ nữ tuyệt vời nhất trong gia đình mình ngày 20.10 thật nhiều niềm vui và hạnh phúc. Chúc mẹ yêu luôn thật nhiều sức khỏe và mãi trẻ trung như bây giờ.
-            </p>
-            <p class="letter__signature">
-              Thân thương,<br>
-              <strong>Con trai cưng</strong>
-            </p>
-          </div>
-        </article>
+      <div class="envelope-scene">
+        <div class="envelope" id="envelope">
+          <div class="envelope__shadow" aria-hidden="true"></div>
+          <article class="letter" aria-label="Lá thư gửi mẹ">
+            <div class="letter__ribbon" aria-hidden="true">♡</div>
+            <img
+              class="letter__photo"
+              src="image_0602a8.jpg"
+              alt="Một kỷ niệm yêu thương của mẹ"
+              onerror="
+                this.onerror = null;
+                this.src = 'IMG_20261019_101518.jpg';
+              "
+            />
+            <div class="letter__content">
+              <p class="letter__date">20 tháng 10</p>
+              <h2>Mẹ yêu của con,</h2>
+              <p>Nhân ngày 20.10 ngày Phụ nữ Việt Nam.</p>
+              <p>
+                Con trai yêu xin chúc người mẹ, người phụ nữ tuyệt vời nhất
+                trong gia đình mình ngày 20.10 thật nhiều niềm vui và hạnh phúc.
+                Chúc mẹ yêu luôn thật nhiều sức khỏe và mãi trẻ trung như bây
+                giờ.
+              </p>
+              <p class="letter__signature">
+                Thân thương,<br />
+                <strong>Con trai cưng</strong>
+              </p>
+            </div>
+          </article>
 
-        <div class="envelope__back" aria-hidden="true"></div>
-        <div class="envelope__flap" aria-hidden="true"></div>
-        <div class="envelope__front" aria-hidden="true"></div>
-        <div class="envelope__heart" aria-hidden="true">♥</div>
+          <div class="envelope__back" aria-hidden="true"></div>
+          <div class="envelope__flap" aria-hidden="true"></div>
+          <div class="envelope__front" aria-hidden="true"></div>
+          <div class="envelope__heart" aria-hidden="true">♥</div>
+        </div>
+
+        <button
+          class="open-button"
+          id="openButton"
+          type="button"
+          aria-controls="envelope"
+          aria-expanded="false"
+        >
+          <span>Mở thư</span>
+          <span class="open-button__icon" aria-hidden="true">♡</span>
+        </button>
       </div>
+    </main>
 
-      <button class="open-button" id="openButton" type="button" aria-controls="envelope" aria-expanded="false">
-        <span>Mở thư</span>
-        <span class="open-button__icon" aria-hidden="true">♡</span>
-      </button>
-    </div>
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="script.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
