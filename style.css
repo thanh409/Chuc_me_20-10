@@ -1,0 +1,487 @@
+:root {
+  --pink-100: #fff4f7;
+  --pink-200: #fbdce7;
+  --pink-300: #f5b5ca;
+  --pink-500: #d95d87;
+  --pink-700: #9f315b;
+  --ink: #6c3048;
+  --paper: #fffdf9;
+  --envelope-width: min(78vw, 440px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8) 0 4%, transparent 18%),
+    radial-gradient(circle at 88% 80%, rgba(255, 220, 231, 0.7) 0 5%, transparent 22%),
+    linear-gradient(135deg, #fff4f7 0%, #fbdce7 48%, #f8c8d8 100%);
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+
+body::before,
+body::after {
+  position: fixed;
+  z-index: -1;
+  width: 240px;
+  height: 240px;
+  border: 1px solid rgba(217, 93, 135, 0.15);
+  border-radius: 50%;
+  content: "";
+}
+
+body::before {
+  top: -110px;
+  right: -70px;
+}
+
+body::after {
+  bottom: -130px;
+  left: -80px;
+  width: 310px;
+  height: 310px;
+}
+
+.celebration {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 38px 20px 64px;
+  isolation: isolate;
+}
+
+.greeting {
+  position: relative;
+  z-index: 2;
+  margin-bottom: clamp(28px, 6vh, 52px);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--pink-700);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: var(--pink-700);
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.8rem, 8vw, 4.6rem);
+  line-height: 1.05;
+}
+
+.instruction {
+  margin: 12px 0 0;
+  color: #99506d;
+  font-size: clamp(0.82rem, 2vw, 0.98rem);
+}
+
+.envelope-scene {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.envelope {
+  position: relative;
+  width: var(--envelope-width);
+  height: calc(var(--envelope-width) * 0.64);
+  perspective: 1200px;
+}
+
+.envelope__shadow {
+  position: absolute;
+  right: 2%;
+  bottom: -24px;
+  left: 2%;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(146, 61, 91, 0.22);
+  filter: blur(10px);
+}
+
+.envelope__back,
+.envelope__front,
+.envelope__flap {
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+}
+
+.envelope__back {
+  z-index: 1;
+  background: linear-gradient(135deg, #f4a8c0, #e887a7);
+  box-shadow: 0 16px 28px rgba(150, 62, 93, 0.2);
+}
+
+.envelope__front {
+  z-index: 4;
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(145deg, #ed9db7, #d96f96);
+}
+
+.envelope__flap {
+  z-index: 5;
+  transform-origin: top center;
+  clip-path: polygon(0 0, 100% 0, 50% 73%);
+  background: linear-gradient(155deg, #f7bfd1, #e98ba8);
+  backface-visibility: visible;
+  transition: transform 0.9s cubic-bezier(0.22, 0.8, 0.3, 1), z-index 0s 0.35s;
+}
+
+.envelope__heart {
+  position: absolute;
+  z-index: 6;
+  top: 43%;
+  left: 50%;
+  color: #fff3f7;
+  font-size: clamp(1.55rem, 5vw, 2.1rem);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s ease;
+}
+
+.letter {
+  position: absolute;
+  z-index: 3;
+  top: 4%;
+  left: 6%;
+  display: flex;
+  width: 88%;
+  min-height: 115%;
+  flex-direction: column;
+  padding: 20px clamp(18px, 4vw, 30px) 24px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--paper);
+  box-shadow: 0 8px 20px rgba(126, 50, 77, 0.13);
+  opacity: 0;
+  transform: translateY(16%) scale(0.94);
+  transform-origin: bottom center;
+  transition: transform 1.15s cubic-bezier(0.2, 0.86, 0.3, 1), opacity 0.65s ease;
+}
+
+.letter::before {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(217, 93, 135, 0.22);
+  content: "";
+  pointer-events: none;
+}
+
+.letter__ribbon {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  color: var(--pink-300);
+  font-size: 1.25rem;
+}
+
+.letter__photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 4px solid #fff;
+  border-radius: 14px 14px 5px 14px;
+  object-fit: contain;
+  box-shadow: 0 3px 10px rgba(159, 49, 91, 0.16);
+}
+
+.letter__content {
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(1.02rem, 2.4vw, 1.28rem);
+  line-height: 1.32;
+}
+
+.letter__date {
+  margin: 0 0 2px;
+  color: var(--pink-500);
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.letter h2 {
+  margin: 0 0 6px;
+  color: var(--pink-700);
+  font-size: 1.45em;
+}
+
+.letter p {
+  margin: 0 0 9px;
+}
+
+.letter__signature {
+  margin-top: 14px !important;
+  text-align: right;
+}
+
+.letter__signature strong {
+  color: var(--pink-700);
+  font-size: 1.15em;
+}
+
+.open-button {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 42px;
+  padding: 13px 22px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, #d95d87, #b9406b);
+  box-shadow: 0 8px 18px rgba(159, 49, 91, 0.24);
+  cursor: pointer;
+  font: 600 0.9rem "Be Vietnam Pro", sans-serif;
+  transition: opacity 0.45s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.open-button:hover {
+  box-shadow: 0 11px 22px rgba(159, 49, 91, 0.32);
+  transform: translateY(-2px);
+}
+
+.open-button:focus-visible {
+  outline: 3px solid rgba(159, 49, 91, 0.3);
+  outline-offset: 4px;
+}
+
+.open-button__icon {
+  font-size: 1.2rem;
+  line-height: 0.8;
+}
+
+.is-open .envelope__flap {
+  z-index: 2;
+  transform: rotateX(180deg);
+}
+
+.is-open .envelope__heart {
+  opacity: 0;
+}
+
+.is-open .letter {
+  z-index: 7;
+  opacity: 1;
+  transform: translateY(-52%) scale(1.08);
+}
+
+.envelope-scene.is-open .open-button {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+
+.sparkle {
+  position: absolute;
+  color: rgba(217, 93, 135, 0.5);
+  font-size: 1.5rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.sparkle--one {
+  top: 18%;
+  left: 12%;
+}
+
+.sparkle--two {
+  top: 30%;
+  right: 12%;
+  animation-delay: -1.4s;
+}
+
+.sparkle--three {
+  bottom: 13%;
+  left: 17%;
+  animation-delay: -2.3s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(12deg); }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --envelope-width: calc(100vw - 32px);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .celebration {
+    justify-content: flex-start;
+    min-height: 100svh;
+    padding: 8svh 16px 40px;
+  }
+
+  .greeting {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .eyebrow {
+    font-size: 0.64rem;
+    letter-spacing: 0.11em;
+  }
+
+  h1 {
+    font-size: clamp(2.45rem, 13vw, 3.6rem);
+  }
+
+  .instruction {
+    max-width: 290px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .envelope {
+    height: calc(var(--envelope-width) * 0.64);
+  }
+
+  .letter {
+    padding: 14px 16px 20px;
+  }
+
+  .letter__photo {
+    height: auto;
+  }
+
+  .letter__content {
+    margin-top: 9px;
+    font-size: 1.04rem;
+    line-height: 1.38;
+  }
+
+  .letter h2 {
+    font-size: 1.32em;
+  }
+
+  .letter p {
+    margin-bottom: 8px;
+  }
+
+  .open-button {
+    min-height: 46px;
+    margin-top: 30px;
+    padding: 11px 20px;
+    font-size: 0.85rem;
+  }
+
+  .is-open .envelope {
+    height: min(470px, calc(100svh - 180px));
+    min-height: 330px;
+  }
+
+  .is-open .letter {
+    position: fixed;
+    z-index: 30;
+    top: 50%;
+    left: 50%;
+    width: min(calc(100vw - 28px), 420px);
+    min-height: 0;
+    max-height: calc(100svh - 24px);
+    padding: 16px 18px 22px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translate(-50%, -50%) scale(1);
+    scrollbar-width: thin;
+  }
+
+  .is-open .letter__photo {
+    height: auto;
+  }
+
+  .is-open .letter__content {
+    font-size: 1.08rem;
+  }
+
+  .is-open .letter::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .is-open .letter::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--pink-300);
+  }
+}
+
+@media (max-width: 800px) {
+  body.is-letter-open {
+    overflow: hidden;
+  }
+
+  body.is-letter-open .greeting {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .envelope-scene.is-open {
+    z-index: 40;
+  }
+
+  .is-open {
+    perspective: none;
+  }
+
+  .is-open .letter {
+    position: fixed;
+    z-index: 30;
+    top: 50%;
+    left: 50%;
+    width: min(calc(100vw - 40px), 520px);
+    min-height: 0;
+    max-height: calc(100svh - 32px);
+    padding: 20px 24px 26px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .is-open .letter__photo {
+    height: auto;
+  }
+
+  .is-open .letter__content {
+    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
